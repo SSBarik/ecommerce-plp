@@ -9,7 +9,7 @@ const ProductListingPage = () => {
   return (
     <ErrorBoundary fallback={<Fallback />}>
       <Suspense fallback={<SkeletonLoader />}>
-        <h1 className="text-3xl font-bold underline">Ecommerce PLP</h1>
+        {/* <h1 className="text-3xl font-bold underline">Ecommerce PLP</h1> */}
         <ProductsContainer />
       </Suspense>
     </ErrorBoundary>

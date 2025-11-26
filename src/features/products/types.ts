@@ -1,3 +1,4 @@
+import type { CategoryList } from "../categories/schemas";
 import type { Product } from "./schemas";
 
 export interface ProductCardProps {
@@ -13,4 +14,7 @@ export interface ProductCardProps {
 
 export interface ProductGridProps {
   products: Product[];
+}
+export interface FilterPanelProps {
+  categories: CategoryList;
 }

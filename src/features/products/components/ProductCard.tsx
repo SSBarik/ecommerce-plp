@@ -18,7 +18,7 @@ const ProductCard = ({
       : Math.round(price);
 
   return (
-    <Card className="h-full border-none bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+    <Card className="h-full border-none bg-white shadow-xs transition hover:-translate-y-1 hover:shadow-md">
       <CardContent className="space-y-4 p-4">
         <div className="aspect-[3/4] w-full overflow-hidden rounded-lg bg-slate-50">
           <img

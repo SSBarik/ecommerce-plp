@@ -3,7 +3,7 @@ import ProductCard from "./ProductCard";
 
 const ProductGrid = ({ products }: ProductGridProps) => {
   return (
-    <div className="grid gap-6 sm:grid-cols-2 md:lg:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+    <div className="grid sm:grid-cols-2 md:lg:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
       {products.map((product) => (
         <ProductCard
           key={product.id}
