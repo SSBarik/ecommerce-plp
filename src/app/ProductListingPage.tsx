@@ -4,14 +4,26 @@ import { ErrorBoundary } from "react-error-boundary";
 import Fallback from "@/components/fallbacks/Fallback";
 import SkeletonLoader from "@/components/skeletons/SkeletonLoader";
 import ProductsContainer from "@/features/products/components/ProductsContainer";
+import FilterPanel from "@/features/products/components/FilterPanel";
+import { useCategoryListQuery } from "@/features/categories/hooks/useCategoryListQuery";
 
 const ProductListingPage = () => {
+  const { data } = useCategoryListQuery();
+
   return (
-    <ErrorBoundary fallback={<Fallback />}>
-      <Suspense fallback={<SkeletonLoader />}>
-        {/* <h1 className="text-3xl font-bold underline">Ecommerce PLP</h1> */}
-        <ProductsContainer />
-      </Suspense>
+    <ErrorBoundary fallback={<Fallback context="PLP" />}>
+      <div className="flex gap-8 p-4">
+        <aside className="hidden lg:block w-64 shrink-0">
+          <Suspense fallback={<SkeletonLoader context="Filters" />}>
+            <FilterPanel categories={data} />
+          </Suspense>
+        </aside>
+        <main className="flex-1">
+          <Suspense fallback={<SkeletonLoader context="Products" />}>
+            <ProductsContainer />
+          </Suspense>
+        </main>
+      </div>
     </ErrorBoundary>
   );
 };

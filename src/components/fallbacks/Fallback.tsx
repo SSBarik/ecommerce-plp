@@ -1,5 +1,5 @@
-const Fallback = () => {
-  return <div>Fallback UI...</div>;
+const Fallback = ({ context }: any) => {
+  return <div>Fallback UI {context}...</div>;
 };
 
 export default Fallback;

@@ -18,3 +18,8 @@ export interface ProductGridProps {
 export interface FilterPanelProps {
   categories: CategoryList;
 }
+
+export type ProductFilters = {
+  categories?: string[];
+  rating?: number;
+};
