@@ -100,7 +100,7 @@ const FilterPanel = ({ categories }: FilterPanelProps) => {
               {categories.map((category) => (
                 <label
                   key={category}
-                  className="flex cursor-pointer items-center gap-2 text-sm text-slate-700"
+                  className="flex cursor-pointer items-center gap-2 text-sm text-slate-700 capitalize"
                 >
                   <input
                     type="checkbox"
