@@ -8,7 +8,11 @@ export const productSchema = z.object({
   price: z.number(),
   rating: z.number(),
   discountPercentage: z.number(),
-  brand: z.string(),
+  brand: z
+    .string()
+    .nullable()
+    .optional()
+    .transform((value) => value ?? ""),
   thumbnail: z.string(),
   images: z.array(z.string()),
 });

@@ -5,7 +5,8 @@ export const getProducts = async (): Promise<ProductsResponse> => {
   try {
     const res = await apiClient.get<ProductsResponse>("products");
     return productsResponseSchema.parse(res.data);
-  } catch {
+  } catch (error) {
+    console.log(error);
     throw new Error("Unable to Fetch Products");
   }
 };
