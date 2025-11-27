@@ -4,7 +4,7 @@ import { useProductsQuery } from "../hooks/useProductsQuery";
 import ProductGrid from "./ProductGrid";
 import ProductPagination from "./ProductPagination";
 
-const PRODUCTS_PER_PAGE = 12;
+const PRODUCTS_PER_PAGE = 16;
 
 const ProductsContainer = () => {
   const { data } = useProductsQuery();
@@ -34,7 +34,7 @@ const ProductsContainer = () => {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="mt-2 mb-20 space-y-10">
       <ProductGrid products={paginatedProducts} />
       <ProductPagination
         currentPage={currentPage}

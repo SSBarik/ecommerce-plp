@@ -6,7 +6,6 @@ import type { ProductCardProps } from "../types";
 const ProductCard = ({
   id,
   title,
-  description,
   price,
   brand,
   image,
@@ -31,12 +30,12 @@ const ProductCard = ({
 
   return (
     <Card className="h-full border-none bg-white shadow-xs transition hover:-translate-y-1 hover:shadow-md">
-      <CardContent className="space-y-4 p-4">
+      <CardContent className="space-y-4 p-3">
         <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-slate-50">
           <img
             src={image}
             alt={`${id}-${title}`}
-            className="h-full w-full object-cover transition duration-300 hover:scale-105"
+            className="h-full w-full object-cover transition duration-300"
             loading="lazy"
           />
           <button
@@ -53,38 +52,34 @@ const ProductCard = ({
               }`}
             />
           </button>
-        </div>
-
-        <div className="flex items-center">
-          <span className="inline-flex items-center gap-2 rounded-md bg-white px-3 py-1 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-slate-200">
+          <div className="absolute left-2 bottom-2 z-10 inline-flex items-center gap-2 rounded-md border border-white/60 bg-white/40 px-3 py-1 text-sm font-semibold text-slate-900 shadow-sm backdrop-blur-md">
             {rating.toFixed(1)}
             <span className="text-emerald-500">★</span>
-            <span className="text-slate-400">|</span>
-            <span className="text-slate-600">{brand}</span>
-          </span>
+          </div>
         </div>
 
         <CardHeader className="space-y-1 p-0">
-          {/* <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-            {brand}
-          </p> */}
+          {brand && (
+            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+              {brand}
+            </p>
+          )}
           <p className="text-base font-semibold text-slate-900 line-clamp-1">
             {title}
           </p>
-          <p className="text-sm text-slate-600 line-clamp-1">{description}</p>
         </CardHeader>
 
-        <div className="space-y-1 text-sm">
-          <div className="flex items-baseline gap-2">
-            <span className="text-xl font-semibold text-slate-900">
+        <div className="space-y-0.5 text-[10px] sm:text-xs md:text-sm">
+          <div className="flex flex-wrap items-baseline gap-1.5 md:gap-1">
+            <span className="text-sm font-semibold text-slate-900 sm:text-base md:text-md">
               Rs. {price.toFixed(0)}
             </span>
             {showDiscount && (
               <>
-                <span className="text-sm text-slate-400 line-through">
+                <span className="text-[10px] text-slate-400 line-through sm:text-xs">
                   Rs. {mrpRounded.toFixed(0)}
                 </span>
-                <span className="text-sm font-semibold text-emerald-600">
+                <span className="text-[8px] font-normal text-emerald-600 sm:text-xs">
                   ({discountPercentage.toFixed(0)}% OFF)
                 </span>
               </>

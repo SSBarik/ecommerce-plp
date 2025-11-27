@@ -18,7 +18,7 @@ const ProductListingPage = () => {
         <ProductListingPageFallback error={error} />
       )}
     >
-      <div className="flex gap-8 p-4">
+      <div className="flex gap-8 p-2 lg:p-4 lg:space-x-4">
         <aside className="hidden lg:block w-64 shrink-0">
           <FilterPanel categories={data} />
         </aside>
