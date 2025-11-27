@@ -1,7 +1,8 @@
+import { memo } from "react";
 import type { ProductGridProps } from "../types";
 import ProductCard from "./ProductCard";
 
-const ProductGrid = ({ products }: ProductGridProps) => {
+const ProductGridComponent = ({ products }: ProductGridProps) => {
   return (
     <div className="grid grid-cols-2 gap-x-0 gap-y-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
       {products.map((product) => (
@@ -20,5 +21,7 @@ const ProductGrid = ({ products }: ProductGridProps) => {
     </div>
   );
 };
+
+const ProductGrid = memo(ProductGridComponent);
 
 export default ProductGrid;

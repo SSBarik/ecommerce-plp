@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useProductsQuery } from "../hooks/useProductsQuery";
 import ProductGrid from "./ProductGrid";
@@ -18,12 +18,18 @@ const ProductsContainer = () => {
   const totalPages = Math.ceil(data.total / PRODUCTS_PER_PAGE);
   const startIndex = (currentPage - 1) * PRODUCTS_PER_PAGE;
   const endIndex = startIndex + PRODUCTS_PER_PAGE;
-  const paginatedProducts = data.products.slice(startIndex, endIndex);
+  const paginatedProducts = useMemo(
+    () => data.products.slice(startIndex, endIndex),
+    [data.products, startIndex, endIndex]
+  );
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const handlePageChange = useCallback(
+    (page: number) => {
+      setCurrentPage(page);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    },
+    [setCurrentPage]
+  );
 
   if (data.total === 0) {
     return (

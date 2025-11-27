@@ -44,7 +44,7 @@ const FilterFAB = ({ categories }: FilterPanelProps) => {
           className="flex h-full w-[85%] flex-col sm:w-3/4 sm:max-w-sm lg:hidden"
         >
           <SheetHeader>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center uppercase justify-between">
               <SheetTitle>Filters</SheetTitle>
               <Button
                 variant="ghost"

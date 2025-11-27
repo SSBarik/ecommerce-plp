@@ -84,12 +84,13 @@ const ProductCard = ({
         <div className="space-y-0.5 text-[10px] sm:text-xs md:text-sm">
           <div className="flex flex-wrap items-baseline gap-1.5 md:gap-1">
             <span className="text-sm font-semibold text-slate-900 sm:text-base md:text-md">
-              Rs. {price.toFixed(0)}
+              {priceDisplay === 1 ? "Re" : "Rs"}. {priceDisplay.toFixed(0)}
             </span>
             {showDiscount && (
               <>
                 <span className="text-[10px] text-slate-400 line-through sm:text-xs">
-                  Rs. {mrpRounded.toFixed(0)}
+                  {Math.round(mrpRounded) === 1 ? "Re" : "Rs"}.{" "}
+                  {mrpRounded.toFixed(0)}
                 </span>
                 <span className="text-[8px] font-normal text-orange-500 sm:text-xs">
                   ({discountPercentage.toFixed(0)}% OFF)

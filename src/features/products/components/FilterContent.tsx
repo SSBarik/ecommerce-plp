@@ -36,7 +36,6 @@ const FilterContent = ({
   const visibleCategories = showAllCategories
     ? categories
     : categories.slice(0, CATEGORY_PREVIEW_COUNT);
-
   const remainingCount = hasExtraCategories
     ? categories.length - CATEGORY_PREVIEW_COUNT
     : 0;
