@@ -7,14 +7,7 @@ import {
 } from "@/components/ui/accordion";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { UI_CONFIG } from "@/constants/config";
-
-interface FilterContentProps {
-  categories: string[];
-  selectedCategories: string[];
-  selectedRating: string | null;
-  onCategoryChange: (category: string, checked: boolean) => void;
-  onRatingChange: (value: string) => void;
-}
+import type { FilterContentProps } from "../types";
 
 const FilterContent = ({
   categories,

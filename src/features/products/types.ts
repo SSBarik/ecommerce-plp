@@ -24,6 +24,14 @@ export interface ProductPaginationProps {
   onPageChange: (page: number) => void;
 }
 
+export interface FilterContentProps {
+  categories: string[];
+  selectedCategories: string[];
+  selectedRating: string | null;
+  onCategoryChange: (category: string, checked: boolean) => void;
+  onRatingChange: (value: string) => void;
+}
+
 export type ProductFilters = {
   categories?: string[];
   rating?: number;
