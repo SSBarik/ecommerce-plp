@@ -18,8 +18,8 @@ const ProductListingPage = () => {
         <ProductListingPageFallback error={error} />
       )}
     >
-      <div className="flex gap-8 p-2 lg:p-4 lg:space-x-4">
-        <aside className="hidden lg:block w-64 shrink-0">
+      <div className="flex flex-col gap-6 p-3 lg:flex-row lg:gap-8 lg:p-4">
+        <aside className="hidden w-64 shrink-0 lg:block">
           <FilterPanel categories={data} />
         </aside>
         <main className="flex-1">
@@ -28,9 +28,11 @@ const ProductListingPage = () => {
             <ProductsContainer />
           </Suspense>
         </main>
-        <Suspense fallback={null}>
-          <FilterFAB categories={data} />
-        </Suspense>
+        <div className="lg:hidden">
+          <Suspense fallback={null}>
+            <FilterFAB categories={data} />
+          </Suspense>
+        </div>
       </div>
     </ErrorBoundary>
   );
