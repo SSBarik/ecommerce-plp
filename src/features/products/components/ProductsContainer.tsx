@@ -1,10 +1,9 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useProductsQuery } from "../hooks/useProductsQuery";
+import { PAGINATION_CONFIG } from "@/constants/config";
 import ProductGrid from "./ProductGrid";
 import ProductPagination from "./ProductPagination";
-
-const PRODUCTS_PER_PAGE = 16;
 
 const ProductsContainer = () => {
   const { data } = useProductsQuery();
@@ -15,9 +14,11 @@ const ProductsContainer = () => {
     setCurrentPage(1);
   }, [searchParams.toString()]);
 
-  const totalPages = Math.ceil(data.total / PRODUCTS_PER_PAGE);
-  const startIndex = (currentPage - 1) * PRODUCTS_PER_PAGE;
-  const endIndex = startIndex + PRODUCTS_PER_PAGE;
+  const totalPages = Math.ceil(
+    data.total / PAGINATION_CONFIG.PRODUCTS_PER_PAGE
+  );
+  const startIndex = (currentPage - 1) * PAGINATION_CONFIG.PRODUCTS_PER_PAGE;
+  const endIndex = startIndex + PAGINATION_CONFIG.PRODUCTS_PER_PAGE;
   const paginatedProducts = useMemo(
     () => data.products.slice(startIndex, endIndex),
     [data.products, startIndex, endIndex]

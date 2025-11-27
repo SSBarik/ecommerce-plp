@@ -1,6 +1,7 @@
 import { Heart } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useWishlistStore } from "@/store/useWishlistStore";
+import { calculatePricing } from "../utils/pricingUtils";
 import type { ProductCardProps } from "../types";
 
 const ProductCard = ({
@@ -16,18 +17,10 @@ const ProductCard = ({
   const { toggleWishlist, isInWishlist } = useWishlistStore();
   const inWishlist = isInWishlist(id);
 
-  const discountFraction = discountPercentage / 100;
-
-  const mrp =
-    discountFraction >= 0.005 ? price / (1 - discountFraction) : price;
-
-  const mrpRounded =
-    discountFraction >= 0.005 ? Math.ceil(mrp * 100) / 100 : price;
-
-  const priceDisplay = Math.round(price);
-  const mrpDisplay = Math.round(mrpRounded);
-
-  const showDiscount = discountPercentage >= 1 && mrpDisplay > priceDisplay;
+  const { priceDisplay, mrpRounded, showDiscount } = calculatePricing(
+    price,
+    discountPercentage
+  );
 
   return (
     <Card className="h-full border-none bg-white shadow-xs transition hover:-translate-y-1 hover:shadow-md">

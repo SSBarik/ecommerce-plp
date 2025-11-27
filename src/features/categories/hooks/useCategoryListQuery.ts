@@ -1,11 +1,11 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { getCategoryList } from "../api/getCategoryList";
 import type { CategoryList } from "../schemas";
+import { QUERY_KEYS } from "@/constants/query-keys";
 
 export const useCategoryListQuery = () => {
   return useSuspenseQuery<CategoryList>({
-    queryKey: ["category-list"],
+    queryKey: QUERY_KEYS.CATEGORIES.LIST,
     queryFn: getCategoryList,
-    staleTime: 1000 * 60,
   });
 };

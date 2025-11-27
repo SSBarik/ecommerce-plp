@@ -1,25 +1,19 @@
 import { useSearchParams } from "react-router-dom";
+import { parseCategoriesFromURL } from "../utils/filterUtils";
 
 export const useFilters = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const categoriesParam = searchParams.get("categories");
-  const selectedCategories = categoriesParam
-    ? categoriesParam
-        .split(",")
-        .map((c) => c.trim())
-        .filter(Boolean)
-    : [];
+  const selectedCategories = parseCategoriesFromURL(
+    searchParams.get("categories")
+  );
   const selectedRating = searchParams.get("rating");
 
   const handleCategoryChange = (category: string, checked: boolean) => {
     const newParams = new URLSearchParams(searchParams);
-    const currentCategories =
-      newParams
-        .get("categories")
-        ?.split(",")
-        .map((c) => c.trim())
-        .filter(Boolean) || [];
+    const currentCategories = parseCategoriesFromURL(
+      newParams.get("categories")
+    );
 
     let updatedCategories: string[];
     if (checked) {

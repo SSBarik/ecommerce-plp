@@ -6,13 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-
-const ratingFilters = [
-  { label: "4★ & above", value: 4 },
-  { label: "3★ & above", value: 3 },
-  { label: "2★ & above", value: 2 },
-  { label: "1★ & above", value: 1 },
-];
+import { UI_CONFIG } from "@/constants/config";
 
 interface FilterContentProps {
   categories: string[];
@@ -29,15 +23,15 @@ const FilterContent = ({
   onCategoryChange,
   onRatingChange,
 }: FilterContentProps) => {
-  const CATEGORY_PREVIEW_COUNT = 10;
   const [showAllCategories, setShowAllCategories] = useState(false);
 
-  const hasExtraCategories = categories.length > CATEGORY_PREVIEW_COUNT;
+  const hasExtraCategories =
+    categories.length > UI_CONFIG.CATEGORY_PREVIEW_COUNT;
   const visibleCategories = showAllCategories
     ? categories
-    : categories.slice(0, CATEGORY_PREVIEW_COUNT);
+    : categories.slice(0, UI_CONFIG.CATEGORY_PREVIEW_COUNT);
   const remainingCount = hasExtraCategories
-    ? categories.length - CATEGORY_PREVIEW_COUNT
+    ? categories.length - UI_CONFIG.CATEGORY_PREVIEW_COUNT
     : 0;
 
   return (
@@ -85,7 +79,7 @@ const FilterContent = ({
             onValueChange={onRatingChange}
             className="space-y-2"
           >
-            {ratingFilters.map((rating) => (
+            {UI_CONFIG.RATING_FILTERS.map((rating) => (
               <div key={rating.value} className="flex items-center space-x-2">
                 <RadioGroupItem
                   value={rating.value.toString()}
