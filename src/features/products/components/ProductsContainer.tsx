@@ -1,5 +1,6 @@
 import { useProductsQuery } from "../hooks/useProductsQuery";
 import ProductGrid from "./ProductGrid";
+import ProductToolbar from "./ProductToolbar";
 
 const ProductsContainer = () => {
   const { data } = useProductsQuery();

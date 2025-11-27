@@ -6,6 +6,7 @@ import SkeletonLoader from "@/components/skeletons/SkeletonLoader";
 import ProductsContainer from "@/features/products/components/ProductsContainer";
 import FilterPanel from "@/features/products/components/FilterPanel";
 import { useCategoryListQuery } from "@/features/categories/hooks/useCategoryListQuery";
+import ProductToolbar from "@/features/products/components/ProductToolbar";
 
 const ProductListingPage = () => {
   const { data } = useCategoryListQuery();
@@ -20,6 +21,8 @@ const ProductListingPage = () => {
         </aside>
         <main className="flex-1">
           <Suspense fallback={<SkeletonLoader context="Products" />}>
+            <ProductToolbar />
+
             <ProductsContainer />
           </Suspense>
         </main>
