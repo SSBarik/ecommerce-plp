@@ -28,3 +28,18 @@ export type ProductFilters = {
   categories?: string[];
   rating?: number;
 };
+
+export type SortOption = "recommended" | "price-asc" | "price-desc";
+
+export const SORT_OPTIONS = {
+  RECOMMENDED: "recommended",
+  PRICE_ASC: "price-asc",
+  PRICE_DESC: "price-desc",
+} as const satisfies Record<string, SortOption>;
+
+export const DEFAULT_SORT_OPTION: SortOption = SORT_OPTIONS.RECOMMENDED;
+
+export type SortOptionConfig = {
+  label: string;
+  value: SortOption;
+};

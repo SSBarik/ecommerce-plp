@@ -1,5 +1,6 @@
 import type { Product } from "../schemas";
-import type { ProductFilters } from "../types";
+import type { ProductFilters, SortOption } from "../types";
+import { DEFAULT_SORT_OPTION, SORT_OPTIONS } from "../types";
 
 export const filterProducts = (
   products: Product[],
@@ -8,9 +9,7 @@ export const filterProducts = (
   let filtered = products;
 
   if (filters?.categories && filters.categories.length > 0) {
-    filtered = filtered.filter((p) =>
-      filters.categories!.includes(p.category)
-    );
+    filtered = filtered.filter((p) => filters.categories!.includes(p.category));
   }
 
   if (filters?.rating) {
@@ -22,21 +21,20 @@ export const filterProducts = (
 
 export const sortProducts = (
   products: Product[],
-  sortBy: string
+  sortBy: SortOption
 ): Product[] => {
-  if (sortBy === "recommended") {
-    return products; // Keep original API order
+  if (sortBy === DEFAULT_SORT_OPTION) {
+    return products;
   }
 
   return [...products].sort((a, b) => {
     switch (sortBy) {
-      case "price-asc":
+      case SORT_OPTIONS.PRICE_ASC:
         return a.price - b.price;
-      case "price-desc":
+      case SORT_OPTIONS.PRICE_DESC:
         return b.price - a.price;
       default:
         return 0;
     }
   });
 };
-

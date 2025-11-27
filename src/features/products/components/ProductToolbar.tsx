@@ -8,23 +8,26 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import type { SortOption, SortOptionConfig } from "../types";
+import { DEFAULT_SORT_OPTION, SORT_OPTIONS } from "../types";
 
-const sortOptions = [
-  { label: "Recommended", value: "recommended" },
-  { label: "Price: Low To High", value: "price-asc" },
-  { label: "Price: High To Low", value: "price-desc" },
+const sortOptions: SortOptionConfig[] = [
+  { label: "Recommended", value: SORT_OPTIONS.RECOMMENDED },
+  { label: "Price: Low To High", value: SORT_OPTIONS.PRICE_ASC },
+  { label: "Price: High To Low", value: SORT_OPTIONS.PRICE_DESC },
 ];
 
 const ProductToolbar = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentSort = searchParams.get("sort") || "recommended";
+  const currentSort = searchParams.get("sort") || DEFAULT_SORT_OPTION;
   const selectedSortLabel =
     sortOptions.find((opt) => opt.value === currentSort)?.label ||
-    "Recommended";
+    sortOptions[0]?.label ||
+    DEFAULT_SORT_OPTION;
 
-  const handleSortChange = (value: string) => {
+  const handleSortChange = (value: SortOption) => {
     const newParams = new URLSearchParams(searchParams);
-    if (value === "recommended") {
+    if (value === DEFAULT_SORT_OPTION) {
       newParams.delete("sort");
     } else {
       newParams.set("sort", value);
