@@ -18,6 +18,11 @@ export interface ProductGridProps {
 export interface FilterPanelProps {
   categories: CategoryList;
 }
+export interface ProductPaginationProps {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}
 
 export type ProductFilters = {
   categories?: string[];

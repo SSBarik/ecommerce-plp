@@ -22,7 +22,6 @@ const ProductListingPage = () => {
         <main className="flex-1">
           <Suspense fallback={<SkeletonLoader context="Products" />}>
             <ProductToolbar />
-
             <ProductsContainer />
           </Suspense>
         </main>
