@@ -1,13 +1,11 @@
 import { AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-interface ProductListingPageFallbackProps {
+interface ErrorBoundaryFallbackProps {
   error?: Error;
 }
 
-const ProductListingPageFallback = ({
-  error,
-}: ProductListingPageFallbackProps) => {
+const ErrorBoundaryFallback = ({ error }: ErrorBoundaryFallbackProps) => {
   return (
     <div className="flex min-h-[calc(100vh-2rem)] flex-col items-center justify-center gap-4 px-4 text-center">
       <div className="flex h-16 w-16 items-center justify-center rounded-full bg-rose-50">
@@ -25,4 +23,5 @@ const ProductListingPageFallback = ({
   );
 };
 
-export default ProductListingPageFallback;
+export default ErrorBoundaryFallback;
+

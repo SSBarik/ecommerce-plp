@@ -3,16 +3,14 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import { ErrorBoundary } from "react-error-boundary";
 import { queryClient } from "./lib/queryClient";
 import "./App.css";
-import ProductListingPage from "./app/ProductListingPage";
-import ProductListingPageFallback from "./components/fallbacks/ProductListingPageFallback";
+import ProductListingPage from "./pages/ProductListingPage";
+import ErrorBoundaryFallback from "./components/fallbacks/ErrorBoundaryFallback";
 
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ErrorBoundary
-        fallbackRender={({ error }) => (
-          <ProductListingPageFallback error={error} />
-        )}
+        fallbackRender={({ error }) => <ErrorBoundaryFallback error={error} />}
       >
         <BrowserRouter>
           <Routes>
