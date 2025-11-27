@@ -1,4 +1,6 @@
+import { Heart } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { useWishlistStore } from "@/store/useWishlistStore";
 import type { ProductCardProps } from "../types";
 
 const ProductCard = ({
@@ -11,6 +13,9 @@ const ProductCard = ({
   rating,
   discountPercentage,
 }: ProductCardProps) => {
+  const { toggleWishlist, isInWishlist } = useWishlistStore();
+  const inWishlist = isInWishlist(id);
+
   const discountFraction = discountPercentage / 100;
 
   const mrp =
@@ -27,13 +32,27 @@ const ProductCard = ({
   return (
     <Card className="h-full border-none bg-white shadow-xs transition hover:-translate-y-1 hover:shadow-md">
       <CardContent className="space-y-4 p-4">
-        <div className="aspect-[3/4] w-full overflow-hidden rounded-lg bg-slate-50">
+        <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-slate-50">
           <img
             src={image}
             alt={`${id}-${title}`}
             className="h-full w-full object-cover transition duration-300 hover:scale-105"
             loading="lazy"
           />
+          <button
+            className="absolute right-2 top-2 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/80 backdrop-blur-sm transition-all hover:scale-110 hover:bg-white"
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleWishlist(id);
+            }}
+            aria-label={inWishlist ? "Remove from wishlist" : "Add to wishlist"}
+          >
+            <Heart
+              className={`h-5 w-5 transition-colors ${
+                inWishlist ? "fill-rose-500 text-rose-500" : "text-slate-400"
+              }`}
+            />
+          </button>
         </div>
 
         <div className="flex items-center">
