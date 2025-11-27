@@ -1,8 +1,7 @@
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
-import Fallback from "@/components/fallbacks/Fallback";
-import FilterPanelSkeleton from "@/components/skeletons/FilterPanelSkeleton";
+import ProductListingPageFallback from "@/components/fallbacks/ProductListingPageFallback";
 import ProductsSkeleton from "@/components/skeletons/ProductsSkeleton";
 import ProductsContainer from "@/features/products/components/ProductsContainer";
 import FilterPanel from "@/features/products/components/FilterPanel";
@@ -14,12 +13,14 @@ const ProductListingPage = () => {
   const { data } = useCategoryListQuery();
 
   return (
-    <ErrorBoundary fallback={<Fallback context="PLP" />}>
+    <ErrorBoundary
+      fallbackRender={({ error }) => (
+        <ProductListingPageFallback error={error} />
+      )}
+    >
       <div className="flex gap-8 p-4">
         <aside className="hidden lg:block w-64 shrink-0">
-          <Suspense fallback={<FilterPanelSkeleton />}>
-            <FilterPanel categories={data} />
-          </Suspense>
+          <FilterPanel categories={data} />
         </aside>
         <main className="flex-1">
           <Suspense fallback={<ProductsSkeleton />}>
