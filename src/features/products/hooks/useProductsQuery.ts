@@ -24,7 +24,7 @@ const parseFiltersFromURL = (searchParams: URLSearchParams): ProductFilters => {
 export const useProductsQuery = () => {
   const [searchParams] = useSearchParams();
   const filters = parseFiltersFromURL(searchParams);
-  const sortBy = searchParams.get("sort") || "price-asc";
+  const sortBy = searchParams.get("sort") || "recommended";
 
   return useSuspenseQuery<ProductsResponse>({
     queryKey: ["products", "all"],
@@ -44,16 +44,19 @@ export const useProductsQuery = () => {
         filtered = filtered.filter((p) => p.rating >= filters.rating!);
       }
 
-      const sorted = [...filtered].sort((a, b) => {
-        switch (sortBy) {
-          case "price-asc":
-            return a.price - b.price;
-          case "price-desc":
-            return b.price - a.price;
-          default:
-            return 0;
-        }
-      });
+      const sorted =
+        sortBy === "recommended"
+          ? filtered // Keep original API order
+          : [...filtered].sort((a, b) => {
+              switch (sortBy) {
+                case "price-asc":
+                  return a.price - b.price;
+                case "price-desc":
+                  return b.price - a.price;
+                default:
+                  return 0;
+              }
+            });
 
       return {
         ...data,

@@ -10,20 +10,25 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const sortOptions = [
+  { label: "Recommended", value: "recommended" },
   { label: "Price: Low To High", value: "price-asc" },
   { label: "Price: High To Low", value: "price-desc" },
 ];
 
 const ProductToolbar = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentSort = searchParams.get("sort") || "price-asc";
-  const selectedSortLabel = sortOptions.find(
-    (opt) => opt.value === currentSort
-  )?.label;
+  const currentSort = searchParams.get("sort") || "recommended";
+  const selectedSortLabel =
+    sortOptions.find((opt) => opt.value === currentSort)?.label ||
+    "Recommended";
 
   const handleSortChange = (value: string) => {
     const newParams = new URLSearchParams(searchParams);
-    newParams.set("sort", value);
+    if (value === "recommended") {
+      newParams.delete("sort");
+    } else {
+      newParams.set("sort", value);
+    }
     setSearchParams(newParams, { replace: true });
   };
 
