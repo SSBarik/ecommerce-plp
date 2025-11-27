@@ -36,9 +36,17 @@ const ProductToolbar = () => {
     <div className="flex items-center justify-end">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" className="gap-2">
-            Sort by: {selectedSortLabel}
-            <ChevronDown className="h-4 w-4" />
+          <Button
+            variant="outline"
+            className="gap-2 rounded-lg border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 shadow-none hover:bg-slate-50"
+          >
+            <span className="text-xs font-medium uppercase tracking-wide text-slate-600">
+              Sort by :
+            </span>
+            <span className="text-sm font-semibold text-slate-800">
+              {selectedSortLabel}
+            </span>
+            <ChevronDown className="h-4 w-4 text-slate-400" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">

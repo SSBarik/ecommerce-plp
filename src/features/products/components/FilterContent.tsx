@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -28,6 +29,18 @@ const FilterContent = ({
   onCategoryChange,
   onRatingChange,
 }: FilterContentProps) => {
+  const CATEGORY_PREVIEW_COUNT = 10;
+  const [showAllCategories, setShowAllCategories] = useState(false);
+
+  const hasExtraCategories = categories.length > CATEGORY_PREVIEW_COUNT;
+  const visibleCategories = showAllCategories
+    ? categories
+    : categories.slice(0, CATEGORY_PREVIEW_COUNT);
+
+  const remainingCount = hasExtraCategories
+    ? categories.length - CATEGORY_PREVIEW_COUNT
+    : 0;
+
   return (
     <Accordion type="multiple" defaultValue={["categories", "rating"]}>
       <AccordionItem value="categories">
@@ -36,10 +49,10 @@ const FilterContent = ({
         </AccordionTrigger>
         <AccordionContent>
           <div className="space-y-2">
-            {categories.map((category) => (
+            {visibleCategories.map((category) => (
               <label
                 key={category}
-                className="flex cursor-pointer items-center gap-2 text-sm text-slate-700 capitalize"
+                className="flex cursor-pointer items-center gap-2 text-sm text-slate-700 hover:font-medium capitalize"
               >
                 <input
                   type="checkbox"
@@ -50,11 +63,20 @@ const FilterContent = ({
                 {category}
               </label>
             ))}
+            {!showAllCategories && hasExtraCategories && (
+              <button
+                type="button"
+                onClick={() => setShowAllCategories(true)}
+                className="text-xs font-semibold text-blue-600 hover:text-blue-700"
+              >
+                +{remainingCount} more
+              </button>
+            )}
           </div>
         </AccordionContent>
       </AccordionItem>
 
-      <AccordionItem value="rating">
+      <AccordionItem value="rating" className="border-none">
         <AccordionTrigger className="text-sm font-semibold text-slate-900">
           Rating
         </AccordionTrigger>
@@ -75,7 +97,6 @@ const FilterContent = ({
                   className="flex cursor-pointer items-center gap-1 text-sm text-slate-700"
                 >
                   {rating.label}
-                  <span className="text-xs text-amber-500">★</span>
                 </label>
               </div>
             ))}

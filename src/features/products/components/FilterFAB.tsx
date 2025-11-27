@@ -41,7 +41,7 @@ const FilterFAB = ({ categories }: FilterPanelProps) => {
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent
           side="right"
-          className="flex h-full w-[85%] flex-col sm:w-3/4 sm:max-w-sm"
+          className="flex h-full w-[85%] flex-col sm:w-3/4 sm:max-w-sm lg:hidden"
         >
           <SheetHeader>
             <div className="flex items-center justify-between">

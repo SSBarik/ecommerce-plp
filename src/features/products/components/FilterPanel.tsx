@@ -17,7 +17,7 @@ const FilterPanel = ({ categories }: FilterPanelProps) => {
     <aside className="hidden w-72 shrink-0 rounded-xl border border-slate-100 bg-white p-4 shadow-sm lg:block">
       <header className="mb-4 flex items-center justify-between">
         <div>
-          <p className="text-xs uppercase tracking-wide text-slate-400">
+          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
             Filters
           </p>
         </div>

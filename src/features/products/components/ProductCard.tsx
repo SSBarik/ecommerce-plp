@@ -6,6 +6,7 @@ import type { ProductCardProps } from "../types";
 const ProductCard = ({
   id,
   title,
+  description,
   price,
   brand,
   image,
@@ -59,14 +60,25 @@ const ProductCard = ({
         </div>
 
         <CardHeader className="space-y-1 p-0">
-          {brand && (
-            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-              {brand}
-            </p>
+          {brand ? (
+            <>
+              <p className="text-sm font-semibold uppercase tracking-wide text-slate-900 line-clamp-1">
+                {brand}
+              </p>
+              <p className="text-sm font-light text-slate-500 line-clamp-1">
+                {title}
+              </p>
+            </>
+          ) : (
+            <>
+              <p className="text-sm font-semibold text-slate-900 line-clamp-1">
+                {title}
+              </p>
+              <p className="text-sm font-light text-slate-500 line-clamp-1">
+                {description}
+              </p>
+            </>
           )}
-          <p className="text-base font-semibold text-slate-900 line-clamp-1">
-            {title}
-          </p>
         </CardHeader>
 
         <div className="space-y-0.5 text-[10px] sm:text-xs md:text-sm">
@@ -79,7 +91,7 @@ const ProductCard = ({
                 <span className="text-[10px] text-slate-400 line-through sm:text-xs">
                   Rs. {mrpRounded.toFixed(0)}
                 </span>
-                <span className="text-[8px] font-normal text-emerald-600 sm:text-xs">
+                <span className="text-[8px] font-normal text-orange-500 sm:text-xs">
                   ({discountPercentage.toFixed(0)}% OFF)
                 </span>
               </>
