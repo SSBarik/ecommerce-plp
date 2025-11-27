@@ -81,7 +81,7 @@ const ProductCard = ({
             </span>
             {showDiscount && (
               <>
-                <span className="text-[10px] text-slate-400 line-through sm:text-xs">
+                <span className="text-[10px] text-slate-400 line-through sm:text-sm">
                   {Math.round(mrpRounded) === 1 ? "Re" : "Rs"}.{" "}
                   {mrpRounded.toFixed(0)}
                 </span>

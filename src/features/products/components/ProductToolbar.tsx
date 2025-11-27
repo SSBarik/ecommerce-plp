@@ -33,7 +33,10 @@ const ProductToolbar = () => {
   };
 
   return (
-    <nav className="flex items-center justify-end" aria-label="Product sorting">
+    <nav
+      className="mb-4 flex items-center justify-end sm:mb-0"
+      aria-label="Product sorting"
+    >
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button

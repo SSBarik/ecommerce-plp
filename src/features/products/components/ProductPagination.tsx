@@ -65,7 +65,7 @@ const ProductPagination = ({
   const pageNumbers = getPageNumbersWithEllipsis();
 
   return (
-    <Pagination>
+    <Pagination className="px-4 sm:px-0">
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious

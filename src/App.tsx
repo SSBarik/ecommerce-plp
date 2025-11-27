@@ -13,9 +13,11 @@ const App = () => {
         fallbackRender={({ error }) => <ErrorBoundaryFallback error={error} />}
       >
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<ProductListingPage />} />
-          </Routes>
+          <div className="mx-auto w-full max-w-screen-2xl">
+            <Routes>
+              <Route path="/" element={<ProductListingPage />} />
+            </Routes>
+          </div>
         </BrowserRouter>
       </ErrorBoundary>
     </QueryClientProvider>
