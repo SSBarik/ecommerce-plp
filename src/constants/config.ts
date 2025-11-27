@@ -20,3 +20,7 @@ export const QUERY_CONFIG = {
   STALE_TIME_MS: 1000 * 60,
   RETRY_COUNT: 1,
 } as const;
+
+export const STORAGE_KEYS = {
+  APP_STORAGE: "ecommerce-plp-app-storage",
+} as const;

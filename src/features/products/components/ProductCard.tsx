@@ -1,6 +1,6 @@
 import { Heart } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { useWishlistStore } from "@/store/useWishlistStore";
+import { useAppStore } from "@/store/useAppStore";
 import { calculatePricing } from "../utils/pricingUtils";
 import type { ProductCardProps } from "../types";
 
@@ -14,7 +14,7 @@ const ProductCard = ({
   rating,
   discountPercentage,
 }: ProductCardProps) => {
-  const { toggleWishlist, isInWishlist } = useWishlistStore();
+  const { toggleWishlist, isInWishlist } = useAppStore();
   const inWishlist = isInWishlist(id);
 
   const { priceDisplay, mrpRounded, showDiscount } = calculatePricing(

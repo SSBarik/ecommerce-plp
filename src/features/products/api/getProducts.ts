@@ -9,7 +9,6 @@ export const getProducts = async (): Promise<ProductsResponse> => {
     );
     return productsResponseSchema.parse(res.data);
   } catch (error) {
-    console.log(error);
     throw new Error("Unable to Fetch Products");
   }
 };
