@@ -5,6 +5,7 @@ import Fallback from "@/components/fallbacks/Fallback";
 import SkeletonLoader from "@/components/skeletons/SkeletonLoader";
 import ProductsContainer from "@/features/products/components/ProductsContainer";
 import FilterPanel from "@/features/products/components/FilterPanel";
+import FilterFAB from "@/features/products/components/FilterFAB";
 import { useCategoryListQuery } from "@/features/categories/hooks/useCategoryListQuery";
 import ProductToolbar from "@/features/products/components/ProductToolbar";
 
@@ -25,6 +26,9 @@ const ProductListingPage = () => {
             <ProductsContainer />
           </Suspense>
         </main>
+        <Suspense fallback={null}>
+          <FilterFAB categories={data} />
+        </Suspense>
       </div>
     </ErrorBoundary>
   );
