@@ -14,12 +14,12 @@ const FilterPanel = ({ categories }: FilterPanelProps) => {
   } = useFilters();
 
   return (
-    <aside className="hidden w-72 shrink-0 rounded-xl border border-slate-100 bg-white p-4 shadow-sm lg:block">
+    <aside className="hidden w-72 shrink-0 self-start rounded-xl border border-slate-100 bg-white p-4 shadow-sm lg:block">
       <header className="mb-4 flex items-center justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+          <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
             Filters
-          </p>
+          </h2>
         </div>
         <Button
           variant="ghost"

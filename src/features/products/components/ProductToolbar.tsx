@@ -33,7 +33,7 @@ const ProductToolbar = () => {
   };
 
   return (
-    <div className="flex items-center justify-end">
+    <nav className="flex items-center justify-end" aria-label="Product sorting">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
@@ -63,7 +63,7 @@ const ProductToolbar = () => {
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
-    </div>
+    </nav>
   );
 };
 

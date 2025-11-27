@@ -65,15 +65,15 @@ const ProductCard = ({
               <p className="text-sm font-semibold uppercase tracking-wide text-slate-900 line-clamp-1">
                 {brand}
               </p>
-              <p className="text-sm font-light text-slate-500 line-clamp-1">
+              <h3 className="text-sm font-light text-slate-500 line-clamp-1">
                 {title}
-              </p>
+              </h3>
             </>
           ) : (
             <>
-              <p className="text-sm font-semibold text-slate-900 line-clamp-1">
+              <h3 className="text-sm font-semibold text-slate-900 line-clamp-1">
                 {title}
-              </p>
+              </h3>
               <p className="text-sm font-light text-slate-500 line-clamp-1">
                 {description}
               </p>
@@ -92,7 +92,7 @@ const ProductCard = ({
                   {Math.round(mrpRounded) === 1 ? "Re" : "Rs"}.{" "}
                   {mrpRounded.toFixed(0)}
                 </span>
-                <span className="text-[8px] font-normal text-orange-500 sm:text-xs">
+                <span className="text-[10px] font-normal text-orange-500 sm:text-xs">
                   ({discountPercentage.toFixed(0)}% OFF)
                 </span>
               </>

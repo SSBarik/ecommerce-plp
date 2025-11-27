@@ -40,14 +40,14 @@ const ProductsContainer = () => {
   }
 
   return (
-    <div className="mt-2 mb-20 space-y-10">
+    <section className="mt-2 mb-20 space-y-10" aria-label="Products">
       <ProductGrid products={paginatedProducts} />
       <ProductPagination
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={handlePageChange}
       />
-    </div>
+    </section>
   );
 };
 
